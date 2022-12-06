@@ -1,0 +1,32 @@
+POST http://localhost:3000/api/info
+Content-Type: application/json
+
+{
+    "fio": "dads",
+    "email": "asd@asd.ss",
+    "phone": "+79024567829"
+
+}
+
+
+###
+POST http://localhost:3000/api/admin
+Content-Type: application/json
+
+{
+    "name": "admin",
+    "password": "admin"
+}
+
+###
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "name": "admin",
+    "password": "admin"
+}
+
+###
+GET http://localhost:3000/api/info
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjcwMzE2NDIwLCJleHAiOjE2NzA0ODkyMjB9.2lwnpx1OF-yL0P-H_XeQasUwMB5E1CtGXYe2udAWBjc
