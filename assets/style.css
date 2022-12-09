@@ -2,10 +2,13 @@ body {
     margin: 0;
     font-family: 'Exo 2', sans-serif;
 
-    font-size: 16px;
+    font-size: 18px;
     color: #282828;
     line-height: 1.6;
+}
 
+html {
+	scroll-behavior: smooth;
 }
 
 *,
@@ -40,7 +43,8 @@ h6 {
     flex-direction: column;
     justify-content: center;
 
-    background: url("../assets/images/intro.jpg") center no-repeat;
+    background: linear-gradient(rgba(161, 161, 161, 0.8), rgba(141, 141, 141, 0.5)),url("../assets/images/intro.jpg");
+    background-repeat: no-repeat;
     background-size: cover;
 }
 
@@ -54,9 +58,7 @@ h6 {
 
 .intro_title {
     font-size: 60;
-    font-weight: 100;
-
-
+    font-weight: 400;
     line-height: 1;
 }
 
@@ -77,12 +79,10 @@ h6 {
     display: inline-block;
     font-size: 30px;
     border-radius: 4px;
-    cursor: pointer;
+    cursor: pointer;	
 
     transition: background-color .1s linear;
     transition: border-radius .1s linear;
-
-
 }
 
 .intro_button:hover {
@@ -91,14 +91,19 @@ h6 {
 
 }
 
+.intro_button:active {
+	/* При нажатии образуется внутренняя тень */
+	box-shadow: inset 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 
+	/* Запретить выделение текста на кнопке */
+	user-select: none;
+}
 
 
 /* Header */
 .header {
     width: 100%;
 
-    
     padding: 10px;
     background: rgba(0, 0, 0, 0.3);
 
@@ -108,6 +113,7 @@ h6 {
     right: 0;
     z-index: 1000;
 
+		scroll-behavior: smooth; 
 }
 
 .login_button {
@@ -148,7 +154,6 @@ h6 {
     text-transform: uppercase;
     font-size: 15px;
     font-weight: 400;
-
 }
 
 .navigation_link {
@@ -157,7 +162,8 @@ h6 {
     margin: 0 18px;
     position: relative;
 
-    color: #282828;
+    color: #000000;
+		font-weight: 500;
     text-decoration: none;
 
     transition: color .15s linear;
@@ -194,7 +200,6 @@ h6 {
 
 
 .header_inner {
-
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -210,15 +215,18 @@ h6 {
     left: 0;
     right: 0;
     z-index: 1000;
+    height: 650px;
     
-    
+    background: url("../assets/images/about.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .section_header {
     
     padding: 8% 8%;
     max-width: 100%;
-    max-width: 50%;
+    min-width: 50%;
 }
 
 .section_subtitle {
@@ -231,20 +239,19 @@ h6 {
 
 .section_title {
     text-align: top;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: 500;
 
     color: #282828;
 }
 
 .section_text {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
 
     color: #282828;
 
 }
-
 
 .about_pic {
     
@@ -280,11 +287,8 @@ h6 {
     max-width: 900px;
     padding: 30px;
     position: relative;
-}
 
-.popup_title {
-    font-size: 40px;
-
+    text-align: center; 
 }
 
 .popup_close {
@@ -303,11 +307,11 @@ h6 {
 
 .form {
     padding: 10px;
-      
+
 }
 
-.input-field {
-    
+.inputs{
+    padding-bottom: 15px;
 }
 
 .promo {
@@ -346,11 +350,71 @@ h6 {
 
 .services-card img {
     width: auto;
+    height: 30%;
     margin-bottom: 1rem;
 }
 
 .services-card:hover {
     box-shadow: 0 2px 20px 15px rgb(0 0 0 / 16%);
+}
+
+.footer_col {
+	padding: 60px;
+}
+
+.footer_logo {
+	margin-bottom: 0px;
+	font-size: 46px;
+	font-weight: 500;
+	color: black;
+}
+
+.footer_text {
+	margin-bottom: 30px;
+	font-size: 15px;
+	color: #999;
+}
+
+.footer_social {
+	margin-bottom: 25px;
+}
+
+.footer_social-header {
+	padding-bottom: 15px;
+	font-size: 14px;
+	color: #333;
+	border-bottom: 1px solid color #e5e5e5;
+}
+
+.footer_social-content {
+	padding-top: 15px;
+	font-size: 15px;
+	color: gray;
+	font-style: italic;
+	font-weight: 300;
+}
+
+.footer_social-content a {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 10px;
+	color: black;
+	font-size: 18px;
+	text-decoration: none;
+
+	/* Шрифт с иконками */
+	font-family: 'FontAwesome'; 
+	src: url(/assets/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf);
+}
+
+.copyright {
+	background: rgba(0, 0, 0, 0.3);
+	width: 100%;
+	padding: 20px 20px;
+	border-top: 1px solid #e5e5e5;
+	font-size: 14px;
+	color: black;
+	text-align: center;
 }
 
 @media (min-width: 577px) and (max-width: 992px) {

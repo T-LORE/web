@@ -4,6 +4,10 @@ window.onload = function(){
     document.body.scrollTop = 0;
 }
 
+/* Скролл в начачло страницы при обновлении */
+document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+document.body.scrollTop = 0; // For Safari
+
 let btnOrder = document.getElementById('order_btn');
 
 btnOrder.onclick = async function () {
