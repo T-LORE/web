@@ -305,6 +305,11 @@ h6 {
     visibility: visible;
 }
 
+.popup-sent-status-data{
+    
+    cursor: default;
+}
+
 .form {
     padding: 10px;
 

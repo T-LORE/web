@@ -80,15 +80,15 @@ function startApp() {
         const info = req.body
         let validationError = []
         if (!validator.isMobilePhone(info.phone.replace(/\D/g, ''), ['ru-RU'])){
-            validationError.push('Wrong phone number')
+            validationError.push('Неверный номер телефона ')
             console.log('Wrong phone number')
         }
         if(!validator.isEmail(info.email, ['ru-RU'])){
-            validationError.push('Wrong email')
+            validationError.push('Неверный E-mail')
             console.log('Wrong email')
         }
         if(!validator.isLength(info.fio, {min: 4, max: 80})){
-            validationError.push('Wrong fio')
+            validationError.push('Неверное ФИО')
             console.log('Wrong fio')
         }
 
@@ -105,10 +105,23 @@ function startApp() {
 
     app.get('/api/info', verifyToken, async function(req, res){
         const orders = await Info.findAll()
+        
         res.send(orders)
     })
 
-    //admin
+    app.post('/api/deleteinfo',  async function(req, res){
+        
+        console.log(req.body.id)
+        await Info.destroy({ where: { id: req.body.id } }).then(() => {
+            res.status(200).send('Removed Successfully');
+           }).catch((err) => {
+            console.log(err);
+            res.status(500).send('We failed to delete for some reason');
+           });
+        
+    })
+
+    //admin login
     app.post('/api/login',async function(req, res){
         const userFromDB = await Admin.findOne({where: {name: req.body.name}})
        if (userFromDB == null){
@@ -117,7 +130,7 @@ function startApp() {
         })
         return
        }
-        //const c =userFromDB.password
+        
 
         
         if (comparePassword(req.body.password, userFromDB.password)) {

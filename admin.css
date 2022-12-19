@@ -27,3 +27,17 @@ body {
     margin-top: 4px;
     margin-left: 4px;
 }
+
+.btn-delete{
+    color: #0b5ed7;
+    margin-top: 4px;
+    margin-left: 4px;
+}
+
+.incorrect-text{
+    color: red;
+    opacity: 0;
+    cursor: default;
+    
+    
+}
