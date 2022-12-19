@@ -6,7 +6,7 @@ const loginPage = /* html */`
   <div>
     <label for="login" class="form-label">Login</label>
     <input type="text" class="form-control" id="login" aria-describedby="loginHelp" name="login">
-    <div id="loginHelp" class="form-text">We'll never share your login with anyone else.</div>
+    <div id="loginHelp" class="form-text"></div>
   </div>
   <div>
     <label for="password" class="form-label">Password</label>
@@ -16,9 +16,17 @@ const loginPage = /* html */`
 </form>`
 
 //root.innerHTML = loginPage
+function logout(){
+  localStorage.setItem('Token', '')
+  location.reload();
+}
+
 
 function ordersPage(orders = []) {
     return /* html */`
+      <div>
+      <button onclick="logout()" class="btn btn-primary btn-logout">Logout</button>
+      </div>
       <table class="table">
       <thead>
         <tr>
