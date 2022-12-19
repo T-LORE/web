@@ -29,7 +29,8 @@ function createPasswordHash(password) {
 }
 
 function comparePassword(password, hash) {
-    if (typeof password === 'string') return bcryptjs.compareSync(password, hash)
+    if (typeof password === 'string') 
+    return bcryptjs.compareSync(password, hash)
     else return false
 }
 

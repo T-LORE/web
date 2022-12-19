@@ -60,11 +60,12 @@ function startApp() {
     app.use(express.json())
 
     app.get('/', function(req, res){
-        res.send('Hello from expasdasdress')
+        res.send('server data get')
         console.log()
 
     })
 
+    //create new admin
     app.post('/api/admin', async function(req, res){
         const passwordHash = createPasswordHash(req.body.password)
         
@@ -74,18 +75,21 @@ function startApp() {
         })
     })
     
-
+    //get record to database
     app.post('/api/info',  async function(req, res){
         const info = req.body
         let validationError = []
         if (!validator.isMobilePhone(info.phone.replace(/\D/g, ''), ['ru-RU'])){
             validationError.push('Wrong phone number')
+            console.log('Wrong phone number')
         }
         if(!validator.isEmail(info.email, ['ru-RU'])){
             validationError.push('Wrong email')
+            console.log('Wrong email')
         }
         if(!validator.isLength(info.fio, {min: 4, max: 80})){
             validationError.push('Wrong fio')
+            console.log('Wrong fio')
         }
 
         if (validationError.length){
@@ -95,7 +99,7 @@ function startApp() {
             res.send(infoFromDB)
         }
         
-            console.log('sent')
+            
         
     })
 
@@ -104,8 +108,18 @@ function startApp() {
         res.send(orders)
     })
 
+    //admin
     app.post('/api/login',async function(req, res){
         const userFromDB = await Admin.findOne({where: {name: req.body.name}})
+       if (userFromDB == null){
+        res.status(403).send({
+            message: 'Wrong login'
+        })
+        return
+       }
+        //const c =userFromDB.password
+
+        
         if (comparePassword(req.body.password, userFromDB.password)) {
             const token = createToken(userFromDB)
             res.send({
